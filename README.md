@@ -1,4 +1,4 @@
-# VKT1 - Tehtävälista (Week 2 - ViewModel & State Management)
+# Tehtävälista (Week 2 - ViewModel & State Management)
 
 Tämä projekti on laajennus Week 1 -tehtävään. Sovellus hallitsee tehtävälistaa ViewModelin avulla.
 
