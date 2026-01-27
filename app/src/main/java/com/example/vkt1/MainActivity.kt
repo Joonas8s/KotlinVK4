@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import com.example.vkt1.ui.HomeScreen
+import com.example.vkt1.view.HomeScreen
 import com.example.vkt1.ui.theme.VKT1Theme
 
 class MainActivity : ComponentActivity() {

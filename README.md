@@ -1,17 +1,26 @@
-# VKT1 - Tehtävälista (Compose)
+# VKT3 - MVVM & StateFlow (Task Manager)
 
-Yksinkertainen tehtävienhallintasovellus Jetpack Composella.
+Tämä projekti toteuttaa tehtävienhallinnan MVVM-arkkitehtuurilla.
 
-### Datamalli (domain/Task.kt)
-- **Task**: id, title, description, priority, dueDate, done.
-- **Priority**: LOW, MEDIUM, HIGH.
+## MVVM-arkkitehtuuri
+MVVM (Model-View-ViewModel) erottaa käyttöliittymän, sovelluslogiikan ja datan toisistaan:
+- **Model**: `Task.kt` määrittelee datan rakenteen.
+- **ViewModel**: `TaskViewModel.kt` hallitsee sovelluksen tilaa ja logiikkaa. Se ei tiedä käyttöliittymän yksityiskohdista.
+- **View**: `HomeScreen.kt` ja `DetailDialog` ovat Compose-komponentteja, jotka vain näyttävät ViewModelin tarjoamaa tilaa.
 
-### Toiminnot (Kotlin)
-- `addTask`: Lisää uuden tehtävän listaan.
-- `toggleDone`: Vaihtaa tehtävän suoritustilaa.
-- `filterByDone`: Suodattaa tehtävät tilan perusteella.
-- `sortByDueDate`: Järjestää tehtävät päivämäärän mukaan.
+**Hyödyt Composessa:**
+- UI on deklaratiivinen: se "piirtää itsensä" tilan perusteella. MVVM tarjoaa tämän tilan selkeästi.
+- Helpompi testattavuus ja koodin ylläpito, kun logiikka ei ole näkymätiedostoissa.
 
-### UI (ui/HomeScreen.kt)
-- Toteutettu täysin Composella (`Column`, `Row`, `LazyColumn`).
-- Sisältää napit toimintojen käyttöön ja listan tehtävistä.
+## StateFlow
+Sovellus käyttää `StateFlow`-rajapintaa tilan hallintaan.
+- `StateFlow` on reaktiivinen datavirta, joka säilyttää aina uusimman tilan.
+- Kun ViewModelissa olevaan listaan tehdään muutoksia (`addTask`, `updateTask` jne.), `StateFlow` ilmoittaa tästä kaikille kuuntelijoille.
+- UI:ssa käytetään `collectAsState()`-funktiota, joka muuttaa Flow'n Compose-tilaksi, aiheuttaen näkymän automaattisen uudelleenhahmonnuksen (recomposition) heti kun data muuttuu.
+
+## Toiminnot
+- **Listaus**: Kaikki tehtävät listassa.
+- **Lisäys**: FAB-painike avaa dialogin uuden tehtävän luontiin.
+- **Muokkaus**: Tehtävän kynä-ikoni avaa muokkausdialogin.
+- **Poisto**: Roskakori-ikoni poistaa tehtävän.
+- **Toggle**: Checkbox vaihtaa suoritustilaa reaktiivisesti.
