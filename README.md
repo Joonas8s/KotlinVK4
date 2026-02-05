@@ -26,8 +26,5 @@ Navigointi on toteutettu `TopAppBar`-komponentin kautta, josta löytyy ikonit er
 - **Settings** (Asetus-ikoni)
 - **Back-navigointi**: Järjestelmän back-painike toimii automaattisesti NavControllerin ansiosta.
 
-## Videodemo
-[Linkki YouTube-videoon]
-
 ## APK-tiedosto
 Löytyy projektin `release`- tai `app/build/outputs/apk/debug` -kansiosta.
